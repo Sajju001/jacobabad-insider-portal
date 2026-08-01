@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Categories - Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/auth-CdF7lbPK.js"></script>
+  <script type="module" crossorigin src="/assets/firestore-9L-DLiGS.js"></script>
+  <script type="module" crossorigin src="/assets/admin-cZjuMlLP.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/auth-CsvkuiEk.css">
+</head>
+<body data-admin-page="manage-categories">
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e293b;">
+          <div class="logo-icon" style="width: 38px; height: 38px; font-size: 1.2rem;">JI</div>
+          <div>
+            <div style="font-weight: 800; color: white; font-size: 1.1rem;">Admin Portal</div>
+            <div style="font-size: 0.75rem; color: #94a3b8;">Jacobabad Insider</div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="admin-sidebar-menu">
+        <li><a href="/admin/dashboard.html">📊 Dashboard</a></li>
+        <li><a href="/admin/add-news.html">✍️ Add News Article</a></li>
+        <li><a href="/admin/manage-news.html">📰 Manage News</a></li>
+        <li><a href="/admin/manage-headlines.html">🔥 Manage Headlines</a></li>
+        <li><a href="/admin/manage-personalities.html">👤 Personalities Directory</a></li>
+        <li><a href="/admin/manage-categories.html" class="active">🏷️ Categories</a></li>
+        <li><a href="/admin/media-library.html">🖼️ Media Library</a></li>
+        <li><a href="/admin/settings.html">⚙️ Settings</a></li>
+      </ul>
+
+      <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid #1e293b;">
+        <div style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;" class="admin-user-email">Admin User</div>
+        <button class="btn btn-danger admin-logout-btn" style="width: 100%; font-size: 0.85rem; padding: 0.5rem;">Logout</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1 style="font-family: var(--font-heading); font-size: 1.75rem; color: var(--text-main);">Manage News Desks & Categories</h1>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Create, view, rename, or delete news classification desks.</p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+        
+        <!-- Add Category Form -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+          <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 1rem;">Create New Category</h3>
+          <form id="add-category-form">
+            <div class="form-group">
+              <label class="form-label">Category Name *</label>
+              <input type="text" id="category-name-input" class="form-control" required placeholder="e.g. Agriculture & Canals" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Short Description</label>
+              <textarea id="category-desc-input" class="form-control" rows="3" placeholder="Category purpose summary..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Create Category &rarr;</button>
+          </form>
+        </div>
+
+        <!-- Categories Table -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm);">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Category Name</th>
+                  <th>Slug</th>
+                  <th>Description</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="categories-table-body">
+                <tr><td colspan="4" class="text-center" style="padding: 2rem;">Loading categories...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

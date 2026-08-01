@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Article - Jacobabad Insider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/article-DJH2CjRB.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/auth-CdF7lbPK.js">
+  <link rel="modulepreload" crossorigin href="/assets/firestore-9L-DLiGS.js">
+  <link rel="modulepreload" crossorigin href="/assets/main-CKaOPDas.js">
+  <link rel="stylesheet" crossorigin href="/assets/auth-CsvkuiEk.css">
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="container top-header-inner">
+      <div class="brand-logo-group">
+        <a href="/" class="brand-logo">
+          <div class="logo-icon">JI</div>
+          <div>
+            <div class="brand-title">Jacobabad Insider</div>
+            <div class="brand-tagline">Truth • Integrity • Independent Journalism</div>
+          </div>
+        </a>
+      </div>
+      <div class="header-meta-group">
+        <div class="date-widget">📅 <span id="current-date">Loading date...</span></div>
+        <div class="weather-widget">📍 Jacobabad: <span id="weather-icon">☀️</span> <strong id="weather-temp">38°C</strong></div>
+        <div class="header-actions">
+          <button class="icon-btn trigger-search">🔍</button>
+          <button class="icon-btn theme-toggle-btn">🌙</button>
+          <div class="auth-status-pill"><a href="/login.html" class="text-light" style="font-size: 0.8rem;">Admin Login</a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREAKING BAR -->
+  <div class="breaking-bar">
+    <div class="breaking-label"><span class="pulse-dot"></span> Breaking News</div>
+    <div class="ticker-content"><div class="ticker-track" id="ticker-track">Loading headlines...</div></div>
+  </div>
+
+  <!-- STICKY NAV -->
+  <nav class="main-nav">
+    <div class="container nav-container">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/news.html">Latest News</a></li>
+        <li><a href="/category.html?cat=Jacobabad">Jacobabad</a></li>
+        <li><a href="/category.html?cat=Politics">Politics</a></li>
+        <li><a href="/category.html?cat=Business">Business</a></li>
+        <li><a href="/category.html?cat=Education">Education</a></li>
+        <li><a href="/category.html?cat=Health">Health</a></li>
+        <li><a href="/category.html?cat=Sports">Sports</a></li>
+        <li><a href="/category.html?cat=Crime">Crime</a></li>
+        <li><a href="/category.html?cat=Technology">Technology</a></li>
+        <li><a href="/category.html?cat=Entertainment">Entertainment</a></li>
+        <li><a href="/category.html?cat=Opinion">Opinion</a></li>
+        <li><a href="/directory.html">Directory</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-mobile-toggle" id="mobile-nav-toggle">☰</button>
+    </div>
+  </nav>
+
+  <main class="container" style="flex: 1; padding: 2rem 0;">
+    <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+      <article id="article-detail-container" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-sm);">
+        <p class="text-center" style="padding: 3rem;">Loading article...</p>
+      </article>
+
+      <!-- RELATED ARTICLES SECTION -->
+      <section style="margin-top: 2rem;">
+        <h3 class="section-title" style="font-size: 1.25rem; margin-bottom: 1rem;">Related Stories</h3>
+        <div class="news-grid" id="related-articles-container" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
+          <!-- Populated dynamically -->
+        </div>
+      </section>
+
+      <!-- READER COMMENTS SECTION -->
+      <section style="margin-top: 2rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;">
+          💬 Reader Discussion (<span id="comments-count">0</span>)
+        </h3>
+
+        <!-- Comment Form -->
+        <form id="add-comment-form" style="margin-bottom: 2rem; background: var(--bg-primary); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+          <h4 style="font-size: 1rem; margin-bottom: 1rem; font-family: var(--font-heading);">Leave a Comment</h4>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label class="form-label">Your Full Name *</label>
+              <input type="text" id="comment-name" class="form-control" required placeholder="e.g. Sajjad Soomro" />
+            </div>
+            <div>
+              <label class="form-label">Email Address (Optional)</label>
+              <input type="email" id="comment-email" class="form-control" placeholder="name@domain.com" />
+            </div>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <label class="form-label">Your Comment *</label>
+            <textarea id="comment-text" class="form-control" rows="3" required placeholder="Share your perspective on this report..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Post Comment</button>
+        </form>
+
+        <!-- Comments List -->
+        <div id="comments-list">
+          <p class="text-muted">Loading comments...</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer style="background-color: var(--bg-footer); color: #cbd5e1; padding: 2rem 0; margin-top: auto; border-top: 4px solid var(--accent-red);">
+    <div class="container text-center" style="font-size: 0.85rem; color: #64748b;">
+      &copy; <span class="current-year">2026</span> Jacobabad Insider. All rights reserved. | <a href="/login.html">Admin Portal</a>
+    </div>
+  </footer>
+
+  <!-- SEARCH MODAL -->
+  <div class="modal-overlay hidden" id="search-modal">
+    <div class="modal-container" style="max-width: 650px;">
+      <button class="modal-close" id="close-search-modal">&times;</button>
+      <h3 style="font-family: var(--font-heading); margin-bottom: 1rem;">Search News</h3>
+      <input type="text" id="global-search-input" class="form-control" placeholder="Search news by title, category, keywords..." autofocus />
+      <div id="global-search-results" style="margin-top: 1rem; max-height: 380px; overflow-y: auto;"></div>
+    </div>
+  </div>
+
+</body>
+</html>

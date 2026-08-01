@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jacobabad Insider - Premier Local News Portal for Jacobabad City</title>
+  <meta name="description" content="Jacobabad Insider is your official, real-time local news portal bringing latest updates on Jacobabad, Sindh politics, education, health, business, and personalities." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script type="module" crossorigin src="/assets/auth-CdF7lbPK.js"></script>
+  <script type="module" crossorigin src="/assets/firestore-9L-DLiGS.js"></script>
+  <script type="module" crossorigin src="/assets/main-CKaOPDas.js"></script>
+  <script type="module" crossorigin src="/assets/news-D7NGREa2.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/auth-CsvkuiEk.css">
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="container top-header-inner">
+      <div class="brand-logo-group">
+        <a href="/" class="brand-logo">
+          <div class="logo-icon">JI</div>
+          <div>
+            <div class="brand-title">Jacobabad Insider</div>
+            <div class="brand-tagline">Truth • Integrity • Independent Journalism</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="header-meta-group">
+        <div class="date-widget">
+          📅 <span id="current-date">Loading date...</span>
+        </div>
+        
+        <div class="weather-widget" id="weather-widget">
+          📍 Jacobabad: <span id="weather-icon">☀️</span> <strong id="weather-temp">38°C</strong> (<span id="weather-cond">Sunny</span>)
+        </div>
+
+        <div class="header-actions">
+          <button class="icon-btn trigger-search" title="Search Articles">🔍</button>
+          <button class="icon-btn theme-toggle-btn" title="Toggle Dark/Light Mode">🌙</button>
+          <div class="auth-status-pill">
+            <a href="/login.html" class="text-light" style="font-size: 0.8rem;">Admin Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREAKING NEWS TICKER -->
+  <div class="breaking-bar">
+    <div class="breaking-label">
+      <span class="pulse-dot"></span> Breaking News
+    </div>
+    <div class="ticker-content">
+      <div class="ticker-track" id="ticker-track">
+        <span class="ticker-item">Loading latest Jacobabad breaking news headlines...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY NAVIGATION -->
+  <nav class="main-nav">
+    <div class="container nav-container">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="/news.html">Latest News</a></li>
+        <li><a href="/category.html?cat=Jacobabad">Jacobabad</a></li>
+        <li><a href="/category.html?cat=Politics">Politics</a></li>
+        <li><a href="/category.html?cat=Business">Business</a></li>
+        <li><a href="/category.html?cat=Education">Education</a></li>
+        <li><a href="/category.html?cat=Health">Health</a></li>
+        <li><a href="/category.html?cat=Sports">Sports</a></li>
+        <li><a href="/category.html?cat=Crime">Crime</a></li>
+        <li><a href="/category.html?cat=Technology">Technology</a></li>
+        <li><a href="/category.html?cat=Entertainment">Entertainment</a></li>
+        <li><a href="/category.html?cat=Opinion">Opinion</a></li>
+        <li><a href="/directory.html">Directory</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-mobile-toggle" id="mobile-nav-toggle">☰</button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="container" style="flex: 1; padding-top: 1.5rem; padding-bottom: 3rem;">
+    
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-grid">
+        <!-- Main Featured Hero Story -->
+        <div id="hero-featured-container">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Hero Sidebar: Trending & Weather -->
+        <div class="hero-sidebar">
+          <div class="widget-card">
+            <div class="widget-title">
+              <span>🔥 Trending News</span>
+              <span class="badge badge-red" style="font-size: 0.65rem;">TOP READ</span>
+            </div>
+            <div class="widget-news-list" id="trending-news-list">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- Quick Jacobabad City Highlights -->
+          <div class="widget-card" style="background: linear-gradient(135deg, var(--bg-header), #1e3a8a); color: white;">
+            <h4 style="font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 0.5rem; color: #ffffff;">📍 Jacobabad Today</h4>
+            <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
+              District Jacobabad is a major agricultural, transport, and energy hub of Sindh connecting Balochistan and Punjab. Stay informed with 24/7 verified coverage.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LATEST NEWS SECTION -->
+    <section style="margin-top: 3rem;">
+      <div class="section-header">
+        <h2 class="section-title">Latest News Coverage</h2>
+        <div class="directory-filters" id="category-filter-bar">
+          <!-- Category buttons populated via JS -->
+        </div>
+      </div>
+
+      <div class="news-grid" id="news-grid-container">
+        <!-- News Cards populated via JS -->
+      </div>
+    </section>
+
+    <!-- SPOTLIGHT: JACOBABAD PERSONALITIES DIRECTORY -->
+    <section style="margin-top: 4rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem;">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Jacobabad Directory Spotlight</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Honoring prominent advocates, doctors, teachers, journalists, and leaders serving Jacobabad city.</p>
+        </div>
+        <a href="/directory.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View Full Directory &rarr;</a>
+      </div>
+      
+      <div style="text-align: center; padding: 2rem 1rem;">
+        <p style="font-size: 1.05rem; color: var(--text-main); font-weight: 600;">Explore over 15 categories of distinguished Jacobabad citizens and professionals.</p>
+        <a href="/directory.html" class="btn btn-secondary" style="margin-top: 1rem;">Browse Advocates, Doctors, Teachers & Scholars &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background-color: var(--bg-footer); color: #cbd5e1; padding: 3rem 0 1.5rem 0; border-top: 4px solid var(--accent-red); margin-top: auto;">
+    <div class="container grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+      <div>
+        <div class="brand-title" style="color: white; font-size: 1.4rem; margin-bottom: 0.5rem;">Jacobabad Insider</div>
+        <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.6;">
+          Jacobabad Insider is an independent, non-partisan news publication committed to providing accurate, timely, and unbiased news from Jacobabad district and Sindh province.
+        </p>
+      </div>
+
+      <div>
+        <h4 style="color: white; font-family: var(--font-heading); margin-bottom: 1rem;">Quick Categories</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+          <li><a href="/category.html?cat=Jacobabad">Jacobabad Local</a></li>
+          <li><a href="/category.html?cat=Politics">Sindh Politics</a></li>
+          <li><a href="/category.html?cat=Business">Grain Market & Economy</a></li>
+          <li><a href="/category.html?cat=Health">Civil Hospital Updates</a></li>
+          <li><a href="/directory.html">Personalities Directory</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="color: white; font-family: var(--font-heading); margin-bottom: 1rem;">Editorial Bureau</h4>
+        <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.6;">
+          📍 Press Club Road, Jacobabad City, Sindh<br/>
+          📞 Bureau Hotline: +92 300 1234567<br/>
+          ✉️ Email: editor@jacobabadinsider.com
+        </p>
+      </div>
+
+      <div>
+        <h4 style="color: white; font-family: var(--font-heading); margin-bottom: 1rem;">Newsletter</h4>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.75rem;">Get daily news alerts delivered straight to your inbox.</p>
+        <form style="display: flex; gap: 0.5rem;" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Jacobabad Insider newsletter!');">
+          <input type="email" placeholder="Your email address" style="padding: 0.5rem; border-radius: 4px; border: 1px solid #334155; background: #0f172a; color: white; width: 100%; font-size: 0.85rem;" required />
+          <button type="submit" class="btn btn-danger" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container" style="border-top: 1px solid #1e293b; padding-top: 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; color: #64748b;">
+      <div>&copy; <span class="current-year">2026</span> Jacobabad Insider. All rights reserved.</div>
+      <div><a href="/login.html">Admin Portal</a> | <a href="/contact.html">Contact Editorial Desk</a></div>
+    </div>
+  </footer>
+
+  <!-- GLOBAL SEARCH MODAL -->
+  <div class="modal-overlay hidden" id="search-modal">
+    <div class="modal-container" style="max-width: 650px;">
+      <button class="modal-close" id="close-search-modal">&times;</button>
+      <h3 style="font-family: var(--font-heading); margin-bottom: 1rem;">Search Jacobabad Insider</h3>
+      <input type="text" id="global-search-input" class="form-control" placeholder="Search news by title, category, keywords..." style="font-size: 1.1rem; padding: 0.8rem 1rem;" autofocus />
+      <div id="global-search-results" style="margin-top: 1rem; max-height: 380px; overflow-y: auto;">
+        <p class="text-muted text-center" style="padding: 1.5rem;">Type to search news articles...</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add / Edit News - Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/auth-CdF7lbPK.js"></script>
+  <script type="module" crossorigin src="/assets/firestore-9L-DLiGS.js"></script>
+  <script type="module" crossorigin src="/assets/admin-cZjuMlLP.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/auth-CsvkuiEk.css">
+</head>
+<body data-admin-page="add-news">
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e293b;">
+          <div class="logo-icon" style="width: 38px; height: 38px; font-size: 1.2rem;">JI</div>
+          <div>
+            <div style="font-weight: 800; color: white; font-size: 1.1rem;">Admin Portal</div>
+            <div style="font-size: 0.75rem; color: #94a3b8;">Jacobabad Insider</div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="admin-sidebar-menu">
+        <li><a href="/admin/dashboard.html">📊 Dashboard</a></li>
+        <li><a href="/admin/add-news.html" class="active">✍️ Add News Article</a></li>
+        <li><a href="/admin/manage-news.html">📰 Manage News</a></li>
+        <li><a href="/admin/manage-headlines.html">🔥 Manage Headlines</a></li>
+        <li><a href="/admin/manage-personalities.html">👤 Personalities Directory</a></li>
+        <li><a href="/admin/manage-categories.html">🏷️ Categories</a></li>
+        <li><a href="/admin/media-library.html">🖼️ Media Library</a></li>
+        <li><a href="/admin/settings.html">⚙️ Settings</a></li>
+      </ul>
+
+      <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid #1e293b;">
+        <div style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;" class="admin-user-email">Admin User</div>
+        <button class="btn btn-danger admin-logout-btn" style="width: 100%; font-size: 0.85rem; padding: 0.5rem;">Logout</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1 id="form-page-title" style="font-family: var(--font-heading); font-size: 1.75rem; color: var(--text-main);">Publish New Article</h1>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Compose news reports, upload cover images via Cloudinary, and manage publication state.</p>
+        </div>
+        <a href="/admin/manage-news.html" class="btn btn-secondary">&larr; Back to News List</a>
+      </div>
+
+      <form id="news-article-form" style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+        
+        <!-- Left Column: Form Main -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-sm);">
+          
+          <div class="form-group">
+            <label class="form-label">Article Headline / Title *</label>
+            <input type="text" id="news-title" class="form-control" required placeholder="e.g. Civil Hospital Jacobabad Launches Solar Backed Emergency Ward" style="font-size: 1.1rem; font-weight: 700;" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">URL Slug (Auto-generated)</label>
+            <input type="text" id="news-slug" class="form-control" placeholder="e.g. civil-hospital-jacobabad-launches-solar-ward" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Summary Excerpt *</label>
+            <textarea id="news-summary" class="form-control" rows="3" required placeholder="Short 2-3 sentence teaser excerpt appearing on news cards and search index..."></textarea>
+          </div>
+
+          <!-- Rich Formatting Toolbar -->
+          <div class="form-group">
+            <label class="form-label">Full Article Body *</label>
+            <div id="editor-toolbar" style="background: var(--bg-input); border: 1px solid var(--border-color); border-bottom: none; border-radius: var(--radius-sm) var(--radius-sm) 0 0; padding: 0.5rem; display: flex; gap: 0.4rem; flex-wrap: wrap;">
+              <button class="btn btn-secondary tool-btn" data-cmd="bold" style="padding: 0.2rem 0.6rem; font-weight: 800;">B</button>
+              <button class="btn btn-secondary tool-btn" data-cmd="italic" style="padding: 0.2rem 0.6rem; font-style: italic;">I</button>
+              <button class="btn btn-secondary tool-btn" data-cmd="formatBlock" data-param="h2" style="padding: 0.2rem 0.6rem;">H2</button>
+              <button class="btn btn-secondary tool-btn" data-cmd="formatBlock" data-param="h3" style="padding: 0.2rem 0.6rem;">H3</button>
+              <button class="btn btn-secondary tool-btn" data-cmd="formatBlock" data-param="blockquote" style="padding: 0.2rem 0.6rem;">Quote</button>
+              <button class="btn btn-secondary tool-btn" data-cmd="insertUnorderedList" style="padding: 0.2rem 0.6rem;">• List</button>
+              <button class="btn btn-secondary tool-btn" data-cmd="createLink" style="padding: 0.2rem 0.6rem;">🔗 Link</button>
+              <button class="btn btn-secondary tool-btn" data-cmd="insertImage" style="padding: 0.2rem 0.6rem;">📷 Image</button>
+            </div>
+            
+            <div id="news-content-editor" contenteditable="true" class="form-control" style="min-height: 280px; border-radius: 0 0 var(--radius-sm) var(--radius-sm); overflow-y: auto; line-height: 1.7; padding: 1rem;">
+              <p>Write or paste your article content here...</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Tags (Comma-separated)</label>
+            <input type="text" id="news-tags" class="form-control" placeholder="Jacobabad, Health, Civil Hospital, Sindh" />
+          </div>
+
+        </div>
+
+        <!-- Right Column: Settings & Media -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+            <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 1rem;">Publishing Controls</h3>
+            
+            <div class="form-group">
+              <label class="form-label">News Category *</label>
+              <select id="news-category-select" class="form-control" required>
+                <!-- Populated via JS -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Author Name</label>
+              <input type="text" id="news-author" class="form-control" placeholder="e.g. Tariq Soomro (Bureau Reporter)" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Publish Status</label>
+              <select id="news-status" class="form-control">
+                <option value="publish">Publish Immediately</option>
+                <option value="draft">Save as Draft</option>
+              </select>
+            </div>
+
+            <div style="margin: 1rem 0; display: flex; flex-direction: column; gap: 0.75rem;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600; cursor: pointer;">
+                <input type="checkbox" id="news-featured" style="width: 18px; height: 18px;" />
+                <span>★ Feature on Hero Banner</span>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600; cursor: pointer;">
+                <input type="checkbox" id="news-breaking" style="width: 18px; height: 18px;" />
+                <span>🔥 Add to Breaking News Bar</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.9rem; font-size: 1rem;">Save & Publish Article &rarr;</button>
+          </div>
+
+          <!-- Cover Image Upload Card -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+            <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 0.75rem;">Cover Image (Cloudinary)</h3>
+            
+            <div class="form-group">
+              <label class="form-label">Upload Image File</label>
+              <input type="file" id="cover-image-file" class="form-control" accept="image/*" />
+              <div id="upload-status" style="font-size: 0.8rem; color: var(--accent-blue); margin-top: 0.3rem;"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Or Image Direct URL</label>
+              <input type="url" id="cover-image-url" class="form-control" placeholder="https://images.unsplash.com/..." />
+            </div>
+
+            <img id="cover-preview-img" class="hidden" style="width: 100%; height: 160px; object-fit: cover; border-radius: 6px; margin-top: 0.5rem;" />
+          </div>
+
+        </div>
+
+      </form>
+    </main>
+  </div>
+
+</body>
+</html>

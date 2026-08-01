@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latest News - Jacobabad Insider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/auth-CdF7lbPK.js"></script>
+  <script type="module" crossorigin src="/assets/firestore-9L-DLiGS.js"></script>
+  <script type="module" crossorigin src="/assets/main-CKaOPDas.js"></script>
+  <script type="module" crossorigin src="/assets/news-D7NGREa2.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/auth-CsvkuiEk.css">
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="container top-header-inner">
+      <div class="brand-logo-group">
+        <a href="/" class="brand-logo">
+          <div class="logo-icon">JI</div>
+          <div>
+            <div class="brand-title">Jacobabad Insider</div>
+            <div class="brand-tagline">Truth • Integrity • Independent Journalism</div>
+          </div>
+        </a>
+      </div>
+      <div class="header-meta-group">
+        <div class="date-widget">📅 <span id="current-date">Loading date...</span></div>
+        <div class="weather-widget">📍 Jacobabad: <span id="weather-icon">☀️</span> <strong id="weather-temp">38°C</strong></div>
+        <div class="header-actions">
+          <button class="icon-btn trigger-search">🔍</button>
+          <button class="icon-btn theme-toggle-btn">🌙</button>
+          <div class="auth-status-pill"><a href="/login.html" class="text-light" style="font-size: 0.8rem;">Admin Login</a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREAKING BAR -->
+  <div class="breaking-bar">
+    <div class="breaking-label"><span class="pulse-dot"></span> Breaking News</div>
+    <div class="ticker-content"><div class="ticker-track" id="ticker-track">Loading headlines...</div></div>
+  </div>
+
+  <!-- STICKY NAV -->
+  <nav class="main-nav">
+    <div class="container nav-container">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/news.html" class="active">Latest News</a></li>
+        <li><a href="/category.html?cat=Jacobabad">Jacobabad</a></li>
+        <li><a href="/category.html?cat=Politics">Politics</a></li>
+        <li><a href="/category.html?cat=Business">Business</a></li>
+        <li><a href="/category.html?cat=Education">Education</a></li>
+        <li><a href="/category.html?cat=Health">Health</a></li>
+        <li><a href="/category.html?cat=Sports">Sports</a></li>
+        <li><a href="/category.html?cat=Crime">Crime</a></li>
+        <li><a href="/category.html?cat=Technology">Technology</a></li>
+        <li><a href="/category.html?cat=Entertainment">Entertainment</a></li>
+        <li><a href="/category.html?cat=Opinion">Opinion</a></li>
+        <li><a href="/directory.html">Directory</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-mobile-toggle" id="mobile-nav-toggle">☰</button>
+    </div>
+  </nav>
+
+  <main class="container" style="flex: 1; padding: 2rem 0;">
+    <div class="section-header">
+      <div>
+        <h1 class="section-title" id="current-category-heading">Latest News Articles</h1>
+        <p class="text-muted" style="margin-top: 0.5rem; font-size: 0.9rem;">Browse verified real-time coverage from Jacobabad city and Sindh province.</p>
+      </div>
+      <div class="directory-filters" id="category-filter-bar">
+        <!-- Filter buttons populated via JS -->
+      </div>
+    </div>
+
+    <div class="news-grid" id="news-grid-container">
+      <!-- Grid items populated via JS -->
+    </div>
+  </main>
+
+  <footer style="background-color: var(--bg-footer); color: #cbd5e1; padding: 2rem 0; margin-top: auto; border-top: 4px solid var(--accent-red);">
+    <div class="container text-center" style="font-size: 0.85rem; color: #64748b;">
+      &copy; <span class="current-year">2026</span> Jacobabad Insider. All rights reserved. | <a href="/login.html">Admin Portal</a>
+    </div>
+  </footer>
+
+  <!-- SEARCH MODAL -->
+  <div class="modal-overlay hidden" id="search-modal">
+    <div class="modal-container" style="max-width: 650px;">
+      <button class="modal-close" id="close-search-modal">&times;</button>
+      <h3 style="font-family: var(--font-heading); margin-bottom: 1rem;">Search News</h3>
+      <input type="text" id="global-search-input" class="form-control" placeholder="Search news by title, category, keywords..." autofocus />
+      <div id="global-search-results" style="margin-top: 1rem; max-height: 380px; overflow-y: auto;"></div>
+    </div>
+  </div>
+
+</body>
+</html>

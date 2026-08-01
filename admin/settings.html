@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings - Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/auth-CdF7lbPK.js"></script>
+  <script type="module" crossorigin src="/assets/firestore-9L-DLiGS.js"></script>
+  <script type="module" crossorigin src="/assets/admin-cZjuMlLP.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/auth-CsvkuiEk.css">
+</head>
+<body data-admin-page="settings">
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e293b;">
+          <div class="logo-icon" style="width: 38px; height: 38px; font-size: 1.2rem;">JI</div>
+          <div>
+            <div style="font-weight: 800; color: white; font-size: 1.1rem;">Admin Portal</div>
+            <div style="font-size: 0.75rem; color: #94a3b8;">Jacobabad Insider</div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="admin-sidebar-menu">
+        <li><a href="/admin/dashboard.html">📊 Dashboard</a></li>
+        <li><a href="/admin/add-news.html">✍️ Add News Article</a></li>
+        <li><a href="/admin/manage-news.html">📰 Manage News</a></li>
+        <li><a href="/admin/manage-headlines.html">🔥 Manage Headlines</a></li>
+        <li><a href="/admin/manage-personalities.html">👤 Personalities Directory</a></li>
+        <li><a href="/admin/manage-categories.html">🏷️ Categories</a></li>
+        <li><a href="/admin/media-library.html">🖼️ Media Library</a></li>
+        <li><a href="/admin/settings.html" class="active">⚙️ Settings</a></li>
+      </ul>
+
+      <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid #1e293b;">
+        <div style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;" class="admin-user-email">Admin User</div>
+        <button class="btn btn-danger admin-logout-btn" style="width: 100%; font-size: 0.85rem; padding: 0.5rem;">Logout</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1 style="font-family: var(--font-heading); font-size: 1.75rem; color: var(--text-main);">Portal Configurations & Credentials</h1>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Manage Cloudinary API keys, portal branding, and localized weather settings.</p>
+        </div>
+      </div>
+
+      <div style="max-width: 650px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-sm);">
+        <form id="settings-form">
+          <div class="form-group">
+            <label class="form-label">Portal Website Title *</label>
+            <input type="text" id="setting-site-name" class="form-control" required value="Jacobabad Insider" />
+          </div>
+
+          <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin: 1.5rem 0 1rem 0; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+            ☁️ Cloudinary Image Storage Configuration
+          </h3>
+
+          <div class="form-group">
+            <label class="form-label">Cloudinary Cloud Name</label>
+            <input type="text" id="setting-cloudinary-cloud" class="form-control" placeholder="e.g. demo" />
+            <small style="color: var(--text-muted); font-size: 0.75rem;">Your Cloudinary Account Name for hosting cover & profile images.</small>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Cloudinary Unsigned Upload Preset</label>
+            <input type="text" id="setting-cloudinary-preset" class="form-control" placeholder="e.g. unsigned_preset" />
+            <small style="color: var(--text-muted); font-size: 0.75rem;">Create an Unsigned Upload Preset in your Cloudinary Dashboard Settings &rarr; Upload.</small>
+          </div>
+
+          <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin: 1.5rem 0 1rem 0; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+            🌤️ Weather Location Settings
+          </h3>
+
+          <div class="form-group">
+            <label class="form-label">Default Weather Location</label>
+            <input type="text" id="setting-weather-city" class="form-control" value="Jacobabad" readonly />
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; padding: 0.8rem;">
+            Save Portal Settings &rarr;
+          </button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

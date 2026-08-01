@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Personalities - Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/auth-CdF7lbPK.js"></script>
+  <script type="module" crossorigin src="/assets/firestore-9L-DLiGS.js"></script>
+  <script type="module" crossorigin src="/assets/admin-cZjuMlLP.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/auth-CsvkuiEk.css">
+</head>
+<body data-admin-page="manage-personalities">
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid #1e293b;">
+          <div class="logo-icon" style="width: 38px; height: 38px; font-size: 1.2rem;">JI</div>
+          <div>
+            <div style="font-weight: 800; color: white; font-size: 1.1rem;">Admin Portal</div>
+            <div style="font-size: 0.75rem; color: #94a3b8;">Jacobabad Insider</div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="admin-sidebar-menu">
+        <li><a href="/admin/dashboard.html">📊 Dashboard</a></li>
+        <li><a href="/admin/add-news.html">✍️ Add News Article</a></li>
+        <li><a href="/admin/manage-news.html">📰 Manage News</a></li>
+        <li><a href="/admin/manage-headlines.html">🔥 Manage Headlines</a></li>
+        <li><a href="/admin/manage-personalities.html" class="active">👤 Personalities Directory</a></li>
+        <li><a href="/admin/manage-categories.html">🏷️ Categories</a></li>
+        <li><a href="/admin/media-library.html">🖼️ Media Library</a></li>
+        <li><a href="/admin/settings.html">⚙️ Settings</a></li>
+      </ul>
+
+      <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid #1e293b;">
+        <div style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;" class="admin-user-email">Admin User</div>
+        <button class="btn btn-danger admin-logout-btn" style="width: 100%; font-size: 0.85rem; padding: 0.5rem;">Logout</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-header">
+        <div>
+          <h1 style="font-family: var(--font-heading); font-size: 1.75rem; color: var(--text-main);">Jacobabad Personalities Registry</h1>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Add, edit, or remove entries in the public directory of Jacobabad city.</p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+        
+        <!-- Add Profile Form -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+          <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 1rem;">Add Personality Profile</h3>
+          
+          <form id="personality-form">
+            <div class="form-group">
+              <label class="form-label">Full Name *</label>
+              <input type="text" id="person-fullname" class="form-control" required placeholder="e.g. Advocate Ghulam Sarwar Soomro" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Category *</label>
+              <select id="person-category" class="form-control" required>
+                <option value="Advocates">Advocates</option>
+                <option value="Judges">Judges</option>
+                <option value="Journalists">Journalists</option>
+                <option value="Doctors">Doctors</option>
+                <option value="Teachers">Teachers</option>
+                <option value="Politicians">Politicians</option>
+                <option value="Businessmen">Businessmen</option>
+                <option value="Engineers">Engineers</option>
+                <option value="Government Officers">Government Officers</option>
+                <option value="Social Workers">Social Workers</option>
+                <option value="Artists">Artists</option>
+                <option value="Students">Students</option>
+                <option value="Writers">Writers</option>
+                <option value="Religious Scholars">Religious Scholars</option>
+                <option value="Sports Personalities">Sports Personalities</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Designation / Role *</label>
+              <input type="text" id="person-designation" class="form-control" required placeholder="e.g. Senior High Court Advocate & Bar President" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Biography *</label>
+              <textarea id="person-bio" class="form-control" rows="3" required placeholder="Detailed career bio..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Education History</label>
+              <input type="text" id="person-education" class="form-control" placeholder="e.g. LL.B (SALU), M.A" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Key Achievements</label>
+              <input type="text" id="person-achievements" class="form-control" placeholder="Major awards, landmarks, achievements..." />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Office Address</label>
+              <input type="text" id="person-office" class="form-control" placeholder="e.g. District Courts Complex, Jacobabad" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Contact Info / Social Links</label>
+              <input type="text" id="person-contact" class="form-control" placeholder="Phone or email address" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Profile Photo (Cloudinary)</label>
+              <input type="file" id="person-photo-file" class="form-control" accept="image/*" />
+              <input type="url" id="person-photo-url" class="form-control" placeholder="https://..." style="margin-top: 0.4rem;" />
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Save Profile &rarr;</button>
+          </form>
+        </div>
+
+        <!-- Personalities Table -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm);">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Profile</th>
+                  <th>Category</th>
+                  <th>Office</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="manage-personalities-table-body">
+                <tr><td colspan="4" class="text-center" style="padding: 2rem;">Loading directory...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>
