@@ -25,9 +25,7 @@
     <!-- Login Form -->
     <div style="padding: 2rem;">
       <div style="background: var(--bg-primary); border: 1px solid var(--border-color); padding: 0.75rem 1rem; border-radius: 6px; font-size: 0.85rem; margin-bottom: 1.25rem; border-left: 4px solid var(--accent-red);">
-        <strong style="color: var(--text-main);">Default Admin Credentials:</strong><br/>
-        <span style="color: var(--text-muted);">Email:</span> <code style="font-weight: 700;">admin@jacobabadinsider.com</code><br/>
-        <span style="color: var(--text-muted);">Password:</span> <code style="font-weight: 700;">Admin@123456</code>
+        <strong style="color: var(--text-main);">Enter Your Credentials:</strong><br/>
       </div>
 
       <div id="login-error-alert" class="hidden" style="background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; padding: 0.75rem 1rem; border-radius: 6px; font-size: 0.85rem; margin-bottom: 1rem;"></div>
@@ -35,16 +33,16 @@
       <form id="admin-login-form">
         <div class="form-group">
           <label class="form-label">Admin Email Address</label>
-          <input type="email" id="login-email" class="form-control" value="admin@jacobabadinsider.com" required />
+          <input type="email" id="login-email" class="form-control" value="Enter your email address" required />
         </div>
 
         <div class="form-group">
           <label class="form-label">Password</label>
-          <input type="password" id="login-password" class="form-control" value="Admin@123456" required />
+          <input type="password" id="login-password" class="form-control" value="Enter your password" required />
         </div>
 
         <button type="submit" id="login-submit-btn" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem; font-weight: 700;">
-          Sign In to Dashboard &rarr;
+          Click to Continue &rarr;
         </button>
       </form>
 
@@ -57,9 +55,6 @@
 
       <div style="margin-top: 1.25rem; text-align: center; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 1rem;">
         <p>Protected System. Access restricted to authorized editorial administrators.</p>
-        <button id="quick-create-admin-btn" class="btn btn-secondary" style="margin-top: 0.75rem; width: 100%; font-size: 0.85rem; padding: 0.6rem; font-weight: 600;">
-          ⚡ Auto-Register / Sign-In Admin Account
-        </button>
       </div>
     </div>
   </div>
